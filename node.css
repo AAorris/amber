@@ -1,0 +1,35 @@
+.node {
+  box-shadow: 0px 2px 5px hsla(0,0%,0%,0.3);
+  width:100px;
+  position:  absolute;
+  left: 0;
+  top: 0; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
+}
+
+.node-container {
+
+}
+
+.node-head {
+  background-color:hsla(0,0%,60%,0.75);
+  border-radius:5px 5px 0 0;
+  padding:3px;
+}
+
+.node-options {
+  background-color:hsla(0,0%,50%,0.75);
+  border-radius:0 0 5px 5px;
+  padding:3px;
+}
+
+.node-inputs {
+
+}
+
+.node-center {
+
+}
+
+.node-outputs {
+
+}

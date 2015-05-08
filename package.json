@@ -1,0 +1,33 @@
+{
+  "name": "amber",
+  "productName": "Amber",
+  "version": "0.0.0",
+  "description": "Node based logic workbench",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "AAorris/amber",
+  "author": {
+    "name": "Aaron Morris",
+    "email": "aaorris@live.com",
+    "url": "aaorris.ca"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . $npm_package_productName --prune --asar --ignore=node_modules/electron-prebuilt --ignore=node_modules/electron-packager --ignore=.git"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "devDependencies": {
+    "electron-packager": "^3.3.0",
+    "electron-prebuilt": "^0.25.2"
+  }
+}

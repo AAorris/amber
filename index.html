@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="amberApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Electron boilerplate</title>
+		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="node.css">
+	</head>
+	<body ng-controller="amberCtrl as amber">
+		<div class="container">
+			<!-- <node type="code">
+    		This is a node.
+			</>
+			<aside draggable="true" id="dragme">
+    		This is an aside, drag me.
+			</aside> -->
+			<div draggable="true" id="dragme" class="node node-container">
+				<div class="node-head ui-draggable">Code</div>
+				<div class="node-options">
+					<div class="node-inputs"></div>
+					<div class="node-center">...</div>
+					<div class="node-outputs"></div>
+				</div>
+			</div>
+		</div>
+		<script src="src/AmberNode.js"></script>
+	</body>
+</html>
