@@ -5,24 +5,60 @@
 		<title>Electron boilerplate</title>
 		<link rel="stylesheet" href="index.css">
 		<link rel="stylesheet" href="node.css">
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	</head>
 	<body ng-controller="amberCtrl as amber">
-		<div class="container">
-			<!-- <node type="code">
-    		This is a node.
-			</>
-			<aside draggable="true" id="dragme">
-    		This is an aside, drag me.
-			</aside> -->
-			<div draggable="true" id="dragme" class="node node-container">
-				<div class="node-head ui-draggable">Code</div>
-				<div class="node-options">
-					<div class="node-inputs"></div>
-					<div class="node-center">...</div>
-					<div class="node-outputs"></div>
-				</div>
+		<div id="canvas" class="node-canvas">
+			<div id="canvasContents">x
+				<node ng-repeat="node in amber.nodes"></node>
 			</div>
 		</div>
-		<script src="src/AmberNode.js"></script>
+		<script>
+			window.$ = window.jQuery = require('./src/jquery.min.js');
+			require('./node_modules/bootstrap/dist/js/bootstrap.js');
+			require('./src/jquery.pep.js');
+			require('./src/angular.min.js');
+			require('./src/AmberApp.js');
+
+			$("#canvasContents").css({"position":"absolute","left":"0px", top:"0px"});
+			canvasX = 0;
+			canvasY = 0;
+			canvasZ = 0;
+			canvasZoom = 1.0;
+
+			var canvas = $("#canvas");
+			var contents = $("#canvasContents");
+
+			placement = function(xo,yo) {
+
+				//offsets come like +=10 or -=10
+				eval("canvasX"+xo);
+				eval("canvasY"+yo);
+				//apply css
+				canvas.css({backgroundPosition:canvasX+"px "+canvasY+"px"});
+				updateCanvasTransform();
+			};
+
+			function updateCanvasTransform() {
+				contents.css({transform:"translate3d("+canvasX+"px,"+canvasY+"px,"+canvasZ+"px)"});
+			}
+
+			//TODO Make easing work on these things
+			canvasPep = canvas.pep({
+				moveTo : placement,
+				shouldEase : false,
+				place: false,
+				ignoreLeftClick: true,
+				shouldPreventDefault: false
+				});
+
+			canvas.bind("mousewheel", function(e) {
+				canvasZ += e.originalEvent.wheelDelta;
+				updateCanvasTransform();
+				canvasPep.scale = canvasZ / 50.0;
+				window.devicePixelRatio = canvasZ / 5.0 * 72;
+			});
+
+		</script>
 	</body>
 </html>

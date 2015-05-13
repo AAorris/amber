@@ -1,6 +1,7 @@
 'use strict';
 const app = require('app');
 const BrowserWindow = require('browser-window');
+const $ = require('jquery').jquery;
 
 // report crashes to the Electron project
 require('crash-reporter').start();
@@ -13,8 +14,7 @@ app.on('window-all-closed', app.quit );
 app.on('ready', function () {
 	mainWindow = new BrowserWindow({
 		width: 1280,
-		height: 720,
-		frame:false
+		height: 720
 	});
 
 	mainWindow.loadUrl(`file://${__dirname}/index.html`);
@@ -24,4 +24,6 @@ app.on('ready', function () {
 		// for multiple windows store them in an array
 		mainWindow = null;
 	});
+
+	mainWindow.openDevTools();
 });

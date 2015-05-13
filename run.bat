@@ -1,1 +1,1 @@
-npm start
+electron . --debug=3991

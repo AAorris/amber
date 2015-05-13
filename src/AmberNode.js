@@ -1,4 +1,6 @@
-var dm, drag_over, drag_start, drop, mouse_down, wheel;
+var dm, drag_over, drag_start, drop, mouse_down, move, wheel;
+
+console.log("Angular: "+angular);
 
 dm = document.getElementById('dragme');
 
@@ -40,6 +42,12 @@ wheel = function(event) {
   return console.log(event.deltaX + "," + event.deltaY + "," + event.deltaZ);
 };
 
+move = function(event) {
+  $(".drag").left = event.screenX;
+  $(".drag").top = event.screenY;
+  return console.log(event.screenX);
+};
+
 dm.addEventListener('dragstart', drag_start, false);
 
 document.body.addEventListener('dragover', drag_over, false);
@@ -49,3 +57,5 @@ document.body.addEventListener('drop', drop, false);
 document.body.addEventListener('mousedown', mouse_down, false);
 
 document.body.addEventListener('wheel', wheel, false);
+
+document.body.addEventListener('mousemove', move, false);

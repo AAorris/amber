@@ -1,0 +1,20 @@
+<div class="node node-container container-fluid pep">
+  <div class="row">
+    <div class="node-head">{{node.head}}</div>
+  </div>
+  <div class="node-options row">
+    <div class="node-inputs col-xs-4">
+      <div ng-repeat="socket in node.inputs">
+        <node-socket type="input" name="{{socket}}"></node-socket>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <node-center>{{node.center || ""}}</node-center>
+    </div>
+    <div class="node-outputs col-xs-4">
+      <div ng-repeat="socket in node.outputs">
+        <node-socket type="output" name="{{socket}}"></node-socket>
+      </div>
+    </div>
+  </div>
+</div>
